@@ -1,0 +1,7 @@
+[09-Jun-2014 00:34:31 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/tag.php on line 1
+[09-Jun-2014 00:35:31 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/tag.php on line 1
+[09-Jun-2014 00:57:52 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/tag.php on line 1
+[09-Feb-2015 19:22:37 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/index.php on line 1
+[09-Feb-2015 19:22:37 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/index.php on line 1
+[09-Feb-2015 19:23:16 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/index.php on line 1
+[09-Feb-2015 19:23:16 America/Chicago] PHP Fatal error:  Call to undefined function get_header() in /home1/uthogg/public_html/wp-content/themes/wordpress-bootstrap-master/index.php on line 1
