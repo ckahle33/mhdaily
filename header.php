@@ -26,6 +26,7 @@
   		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
 		<!-- wordpress head functions -->
+		<?php define('WP_DEBUG', true); ?>
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
 				

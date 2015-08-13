@@ -33,8 +33,22 @@
 								echo "<div class='title large featured'>";
 							} else {
 								echo "<div class='title large'>";
-							}?>
-							<a href="<?php the_field('post_url') ?>"><?php the_title(); ?></a><br>
+							} ?>
+
+							<?php 
+
+							$html;
+
+							if (get_field('post_url')) { 
+								echo '<a href="' . get_field('post_url') . '">' . get_the_title() . '</a><br>';
+							} else {
+								echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+							} 
+								// echo $html;		
+							?>
+							
+							
+
 						</div>
 						<div class="sidebar-source">
 							<?php the_field('post_source'); ?> -  <?php echo get_the_date('F j, Y'); ?>			

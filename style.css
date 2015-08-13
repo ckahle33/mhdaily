@@ -578,6 +578,10 @@ input#s {
 	margin-bottom: 0;
 }
 
+h2.topic {
+	margin-top: 15px;
+}
+
 .post_tags:last-child {
 	margin-bottom: 20px;
 
