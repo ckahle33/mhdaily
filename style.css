@@ -1,0 +1,704 @@
+/*
+Theme Name: wp-bootstrap
+Theme URI: http://320press.com/wpbs
+Description: A simple responsive theme based on the Bootstrap framework. Includes multiple page templates, two different sidebars and a theme options panel.
+Version: 3.0
+Author: 320press
+Author URI: http://320press.com
+Tags: black, white, one-column, two-columns, flexible-width, custom-background, custom-colors, custom-menu, full-width-template, theme-options
+License: GNU General Public License v2.0 & Apache License 2.0
+License URI: http://www.gnu.org/licenses/gpl-2.0.html http://www.apache.org/licenses/LICENSE-2.0
+*/
+
+/* HEADS UP: Everything that you will normally find here can be found in the library/less/wp.less */
+
+body {
+	background: #fff;
+	background-repeat: repeat;
+	padding-top: 0;
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B'; 
+	font-weight: 400; 
+	font-style: normal;
+	-webkit-font-smoothing: antialiased !important;
+	font-smoothing: antialiased !important;
+	-moz-font-smoothing: antialiased !important;
+}
+
+h1 {
+	font-family: 'Knockout 32 A', 'Knockout 32 B';
+	font-weight: 400;
+}
+
+.custom-background {
+	background: #fff;
+	border-top: 20px solid;
+}
+
+.navbar-default {
+	background: #fff;
+	border-bottom: none;
+	
+}
+
+body.admin-bar .navbar-fixed-top {
+/*  box-shadow: inset 0px 0px 10px rgba(0,0,0,0.15);*/
+	background: #fff; /* Old browsers */
+  	border-top: 20px solid #454546;
+  	border-bottom: none;
+  	padding-top: 15px;
+  	position: relative;
+  	top: 0;
+}
+
+.navbar-header {
+    margin: 0 auto;
+    position: relative;
+    width: 50px;
+    float: none;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.header {
+	margin-top: -20px;
+}
+
+.search {
+	padding: 0;
+}
+
+/* nav menu icon + Bootstrap over-Rides*/
+
+@media (min-width: 320px) {
+	.navbar-toggle {
+		display: block;
+		position: relative;
+		background-color: #cc5600;
+		background-image: none;
+		border: none;
+		border-radius: 0 0 4px 4px;
+		z-index: 3;
+		margin: -1px auto;
+	}
+	.navbar-toggle:hover {
+		background-color: #cc5600;
+	}
+
+	.navbar-default .navbar-toggle .icon-bar {
+		background-color: #fff;
+	}
+
+	.navbar-collapse.collapse {
+		display: none !important;
+	}
+
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		width: 300px;
+		background: #9d9d9d;
+		margin: 0 auto;
+		border-radius: 0 0 10px 10px;
+		position: relative;
+		z-index: 1;
+		top: -32px;
+	}
+
+	.navbar-default .navbar-collapse h1, .navbar-default .navbar-form h1 {
+		margin-top: 40px;
+	}
+
+}
+
+h2, h2.topic {
+	color: #cc5600;
+	font-weight: bold;
+	font-family: 'Knockout 70 A', 'Knockout 70 B'; font-weight: 400; font-style: normal;
+	font-size: 34px;
+	text-transform: uppercase;
+}
+
+#main h2.topic.tag-page:before {
+	margin-right: 0;
+}
+
+#main h2.topic:before {
+	content: '';
+}
+
+.navbar-brand h2 {
+	color: #000;
+}
+
+.sub-nav {
+	padding: 0;
+}
+
+.alert.alert-info {
+	display: none;
+}
+
+.date {
+	color: #999999;
+	font-family: 'Knockout 70 A', 'Knockout 70 B'; font-weight: 400; font-style: normal;
+	text-transform: uppercase;
+}
+
+
+#main {
+	border-top: 1px solid #757575;
+	/*margin-left: 15px;*/
+	padding: 5px;
+
+}
+
+article {
+	padding-top: 30px;
+}
+
+#content {
+	/*margin-top: 10%;*/
+}
+
+.logo {
+	width: 100%;
+	margin: 20px auto;
+	top: 0;
+	left: 0;
+	height: 100px;
+}
+
+.logo-center {
+    width: 300px;
+    position: relative;
+    margin: 20px auto;
+}
+
+li {
+	list-style-type: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+/*Tags*/
+
+a[class*='tag'] {
+	margin: 18px 0;
+	position: relative;
+}
+
+a[class*='success'] {
+	font-size: 22px !important;
+}
+
+a[class*='info'] {
+	font-size: 18px !important;
+}
+
+hr {
+	margin: 5px 0;
+}
+/* recent posts- front page */
+
+.recent {
+
+	border-radius: 4px; 
+	padding: 0 10px;
+}
+
+/* TagPage image */
+
+.alignnone.size-full {
+	width: 100%;
+	height: 100%;
+	border-radius: 15px;
+}
+
+.recent img {
+	border-radius: 10px;
+	width: 110%;
+	opacity: 0.5;
+	-moz-opacity: .8;
+	-webkit-filter: saturate(100%) contrast(200%);
+}
+.recent .image {
+	height: 220px;
+	opacity: .4;
+	border-radius: 10px;  
+	-webkit-background-size: cover;
+	 -moz-background-size: cover;
+	 -o-background-size: cover;
+	 background-size: cover;
+}
+
+.image-overlay {
+	background: rgb(81, 83, 21);
+	border-radius: 10px;
+}
+
+.image-overlay a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	z-index: 100;
+}
+
+.feature-overlay  {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	width: 100%;
+}
+
+.feature-intro p {
+	color: #000;
+	font-size: 14px;
+}
+
+.news-item {
+	margin: 10px 0;
+}
+
+.feature-title, .feature-title a  {
+
+	font-size: 30px;
+	color: #fff;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px #000;
+	width: 80%;
+	line-height: 1.2;
+	font-family: 'Knockout 32 A', 'Knockout 32 B'; font-weight: 400; font-style: normal, sans-serif;
+}
+
+.feature-info {
+	position: absolute;
+	color: #fff;
+	font-size: 20px;
+	text-shadow: 1px 1px 1px #000;
+	font-family: 'Knockout 27 A', 'Knockout 27 B'; font-weight: 400; font-style: normal;
+	letter-spacing: 1px;
+
+}
+
+.input-group {
+	width: 200px;
+	margin: 24px 0 0 35px;
+}
+.input-group input{
+	border-radius: 15px !important;
+	border-bottom-right-radius: 15px;
+	border-top-right-radius: 15px;
+	height: 30px;
+}
+
+.btn.btn-default {
+	border: none;
+    position: absolute;
+	top: 4px; 
+	right: 20px;
+	padding: 0;
+
+}
+
+.btn.btn-default img {
+	width: 20px;
+}
+
+input#s {
+	margin-top: 20px;
+}
+
+#post-stream {
+	margin-top: 10px;
+}
+
+/* Sidebar styles */
+ #sidebar1 ul  {
+	padding-left: 0;
+ }
+
+#sidebar1 ul li {
+	margin: 10px 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.sidebar-source {
+	font-weight: 200;
+	font-style: italic;
+}
+
+.sidebar-title {
+	color: #cc5600;
+}
+
+.body-source {
+
+}
+
+.italic {
+	font-style: italic;
+	float: left;
+}
+
+.body-tag a{
+	color: #9E9E9E;
+}
+
+.feed {
+	border-top: 1px solid #757575;
+	padding: 0 30px 0 0;
+}
+
+.title, .title a {
+	font-size: 16px;
+	font-weight: bold;
+	color: #000;
+}
+
+.featured a:before, .featured .large a:before, #main h2:before {
+	content: url('/wp-content/themes/wordpress-bootstrap-master/images/star-icon.png');
+	height: 20px;
+	width: 19px;
+	position: relative;
+	margin-right: 5px;
+}
+
+
+
+.blue {
+	background:#72b1c8;
+	height: 4px;
+	max-width: 100px;
+	margin: 10px 0;
+}
+
+.large a {
+	font-size: 22px;
+}
+
+.small a {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+/* social icons */
+
+.social {
+	width: 200px;
+	float: right;
+	margin-top: 20px;
+	padding-left: 0;
+}
+
+.social-icons {
+	padding: 0;
+}
+
+.social-icons form {
+	float: left;
+	margin-left: 125px;
+}
+
+.social li{
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	border-radius: 50%;
+}
+
+.social li a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.social .fb {
+	background: #9E9E9E url('/wp-content/themes/wordpress-bootstrap-master/images/fb-logo.png') no-repeat 12px 7px;
+	-o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition: .5s;
+}
+
+.social .fb:hover {
+	background: #3B5998 url('/wp-content/themes/wordpress-bootstrap-master/images/fb-logo.png') no-repeat 12px 7px;
+}
+
+.social .twitter {
+	background: #9E9E9E url('/wp-content/themes/wordpress-bootstrap-master/images/twitter-logo.png') no-repeat 9px 10px;
+  -o-transition:.5s;
+  -ms-transition:.5s;
+  -moz-transition:.5s;
+  -webkit-transition:.5s;
+  /* ...and now for the proper property */
+  transition: .5s;
+}
+
+.social .twitter:hover {
+		background: #4099FF url('/wp-content/themes/wordpress-bootstrap-master/images/twitter-logo.png') no-repeat 9px 10px;
+}
+
+
+.social .mh {
+	background: #9E9E9E url('/wp-content/themes/wordpress-bootstrap-master/images/mh-logo.png') no-repeat 6px 5px;
+	  -o-transition:.5s;
+	  -ms-transition:.5s;
+	  -moz-transition:.5s;
+	  -webkit-transition:.5s;
+	  /* ...and now for the proper property */
+	  transition: .5s;
+}
+
+.social .mh:hover {
+	background: #9FA51F url('/wp-content/themes/wordpress-bootstrap-master/images/mh-logo.png') no-repeat 6px 5px;
+}
+
+
+.social .rss {
+	background: #9E9E9E url('/wp-content/themes/wordpress-bootstrap-master/images/rss-logo.png') no-repeat 10px 8px;
+	 -o-transition:.5s;
+	  -ms-transition:.5s;
+	  -moz-transition:.5s;
+	  -webkit-transition:.5s;
+	  /* ...and now for the proper property */
+	  transition: .5s;
+}
+
+
+.social .rss:hover {
+	background: #FF6600 url('/wp-content/themes/wordpress-bootstrap-master/images/rss-logo.png') no-repeat 10px 8px;
+}
+
+.social .about {
+	background: #9E9E9E;
+	text-transform: uppercase;
+	font-family: 'Knockout 26 A', 'Knockout 26 B';
+	font-size: 18px;
+	color: #fff;
+	vertical-align: top;
+	padding-top: 4px;
+	letter-spacing: 1px;
+	padding-left: 6px;
+		 -o-transition:.5s;
+	  -ms-transition:.5s;
+	  -moz-transition:.5s;
+	  -webkit-transition:.5s;
+	  /* ...and now for the proper property */
+	  transition: .5s;
+}
+
+.about:hover {
+	background: #14889E;
+}
+
+.about a {
+	color: #fff;
+}
+/* Footer */ 
+
+.footer {
+	color: #333333;
+	padding: 80px 0;
+	background: #eee;
+}
+
+.footer img {
+	max-height: 90px;
+}
+/* Dropdown tag styles */
+
+.navbar-collapse .topics {
+	color: #cc5600;
+	font-weight: bold;
+	font-family: 'Knockout 70 A', 'Knockout 70 B';
+	font-weight: 400;
+	font-style: normal;
+	font-size: 34px;
+	text-transform: uppercase;
+	text-align: center;
+	float: left;
+	width: 100%;
+	margin-top: 30px;
+}
+.post-body {
+	word-break: break-word;
+}
+
+.post_tags {
+	margin-top: 30px;
+	text-align: center;
+	word-break: break-word;
+}
+
+.post_tags a {
+	display: inline;
+	margin: 0 5px;
+	display: inline-block;
+}
+
+.post_tags a:not(.topics) {
+	font-family: 'Knockout 27 A', 'Knockout 27 B'; 
+	font-weight: 400; 
+	font-style: normal;
+	text-transform: uppercase;
+	color: #fff;
+	font-size: 28px;
+}
+
+.post_tags-sidebar a {
+	display: block;
+	margin: 0;
+}
+
+.tag .title.large {
+	margin-top: 10px;
+}
+
+.single .title.large {
+	font-size: 22px;
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+}
+
+.single .page-header {
+	margin: 0px 0 20px;
+}
+
+#main p.meta {
+	color: rgb(51, 51, 51);
+	display: block;
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+	font-size: 14px;
+}
+
+.tag .post-body p {
+	margin-bottom: 0;
+}
+
+.post_tags:last-child {
+	margin-bottom: 20px;
+
+}
+
+.post_tags a.topics:after {
+	content: "";
+}
+
+
+.post_tags a:after {
+	content: "\2022";
+	margin: 0 0 0 8px;
+}
+
+.post_tags a:last-child:after {
+	content: '';
+}
+
+label[for="mc4wp_email"] {
+	font-family: 'Sentinel SSm A', 'Sentinel SSm B';
+	font-weight: 400;
+	font-style: normal;
+	color: #000;
+	font-size: 14px;
+	font-style: italic;
+}
+
+.rednao-control-group.rednaosubmissionbutton {
+	height: 10px;
+	margin-bottom: 0 !important;
+}
+.rednao-control-group.rednaotextinput {
+	margin-bottom: 0 !important;
+}
+
+div[id*='formContainer'].rednaoFormContainer {
+	float: left;
+	width: 100%;
+	text-align: inherit !important;
+}
+
+.rednaoFormContainer .redNaoControls .redNaoInputText {
+	width: auto !important;
+}
+
+.rednaoFormContainer .redNaoControls .redNaoCheckBox {
+		margin: 0px 14px 0 0px !important;
+}
+
+.subscribe input[type="submit"] { 
+		float: right;
+		margin-top: -40px;
+		background: #14889E;
+		text-transform: uppercase;
+		font-family: 'Knockout 28 A', 'Knockout 27 B';
+		font-size: 18px;
+		color: #fff;
+		vertical-align: top;
+		letter-spacing: 1px;
+		border: none;
+	}
+
+.subscribe input {
+	border-radius: 10px;
+	border: 1px solid #9E9E9E;
+	height: 30px;
+}
+
+#mc4wp_email {
+	max-width: 200px;
+	height: 30px;
+	padding-left: 8px;
+}
+
+
+@media (max-width: 768px) {
+
+	body {
+		padding: 0 10px;
+	}
+	.navbar {
+		border: none;
+	}
+	.logo-center img {
+		width: 95%;
+	}
+/*	.post_tags:last-child {
+		margin-bottom: 0;
+	}*/
+
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		max-height: inherit;
+
+	}
+	.date {
+		text-align: center;
+		margin-right: 8%;
+		width: 100%;
+	}
+	.social {
+		float: left;
+		width: 100%;
+		text-align: center;
+	}
+	.social-icons form {
+		margin-left: 0;
+	}
+	.feature-title {
+		font-size: 24px;
+	}
+	.input-group {
+	display: none;
+	}
+	.subscribe input[type="submit"] {
+		margin-right: 0;
+	}
+	.daily-feed, .mh-authors, .mh-sources{
+		display: none;
+	}
+	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+		width: 100%;
+	}
+}
+
