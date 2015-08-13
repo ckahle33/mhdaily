@@ -575,6 +575,10 @@ input#s {
 	font-size: 14px;
 }
 
+#main article {
+	margin-top: 20px;
+}
+
 .tag .post-body p {
 	margin-bottom: 0;
 }
