@@ -116,7 +116,7 @@
 					<?php endwhile; ?>
     			<?php wp_reset_query(); ?>
 			</div>
-			
+
 			<?php 
 				wp_reset_query();
 				$url = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
