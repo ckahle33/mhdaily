@@ -229,6 +229,7 @@ hr {
 	 -moz-background-size: cover;
 	 -o-background-size: cover;
 	 background-size: cover;
+	 position: relative;
 }
 
 .image-overlay {
@@ -581,6 +582,15 @@ input#s {
 h2.topic {
 	margin-top: 15px;
 }
+
+.video-icon {
+  position: absolute;
+  bottom: 0px;
+  right: 20px;
+  color: #fff;
+  font-size: 4em;
+}
+
 
 .post_tags:last-child {
 	margin-bottom: 20px;

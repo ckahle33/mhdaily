@@ -33,8 +33,20 @@
 						?>
 							
 							<div class="image-overlay">
-								<a href="<?php echo the_field('post_url'); ?>"></a>
+							
+							<!-- check if the advanced custom field is set, if not use normal permalink -->
+								<?php if (get_field('post_url')) { ?>
+									<a href="<?php echo the_field('post_url'); ?> "></a>
+								<?php } else { ?>
+									<a href="<?php echo get_permalink(); ?>"> <?php get_the_title(); ?> </a>
+								<?php } ?>
+
 								<div class="image" style="background: url('<?php echo $thumb_url; ?>'); background-size: cover;">
+									<?php if (has_tag('video')) { ?>
+										<div class="video-icon">	
+											<i class="glyphicon glyphicon-play-circle" aria-hidden="true"></i>
+										</div>
+									<?php } ?>
 								</div>
 							</div>
 							<div class="feature-overlay">
@@ -90,8 +102,20 @@
 								$thumb_alt = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
 						?>
 							<div class="image-overlay">
-								<a href="<?php echo the_field('post_url'); ?>"></a>
+
+								<!-- check if the advanced custom field is set, if not use normal permalink -->
+								<?php if (get_field('post_url')) { ?>
+									<a href="<?php echo the_field('post_url'); ?> "></a>
+								<?php } else { ?>
+									<a href="<?php echo get_permalink(); ?>"> <?php get_the_title(); ?> </a>
+								<?php } ?>
+
 								<div class="image" style="background: url('<?php echo $thumb_url; ?>'); background-size: cover;">
+									<?php if (has_tag('video')) { ?>
+										<div class="video-icon">	
+											<i class="glyphicon glyphicon-play-circle" aria-hidden="true"></i>
+										</div>
+									<?php } ?>
 								</div>
 							</div>
 							<div class="feature-overlay">
@@ -142,7 +166,14 @@
 							} else {
 								echo "<div class='title'>";
 							}?>
-							<a href="<?php echo the_field('post_url') ?>"><?php the_title(); ?></a><br>
+
+							<!-- check if the advanced custom field is set, if not use normal permalink -->
+							<?php if (get_field('post_url')) { ?>
+								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
+							<?php } else { ?>
+								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
+							<?php } ?>
+
 						</div>
 						<div class="sidebar-source">
 							<?php the_field('post_source'); ?>			
@@ -174,7 +205,14 @@
 						<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
 						<div class="news-item">
 							<div class='title large featured'>
-								<a href="<?php the_field('post_url') ?>"><?php the_title(); ?></a><br>
+							
+							<!-- check if the advanced custom field is set, if not use normal permalink -->
+							<?php if (get_field('post_url')) { ?>
+								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
+							<?php } else { ?>
+								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
+							<?php } ?>
+
 							</div>
 							<div class="body-source">
 								<div class="italic"><?php the_field('post_source'); ?></div> -  <?php echo get_the_date('F j, Y'); ?>			
