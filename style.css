@@ -648,7 +648,6 @@ div[id*='formContainer'].rednaoFormContainer {
 
 .subscribe input[type="submit"] { 
 		float: right;
-		margin-top: -40px;
 		background: #14889E;
 		text-transform: uppercase;
 		font-family: 'Knockout 28 A', 'Knockout 27 B';
@@ -665,10 +664,25 @@ div[id*='formContainer'].rednaoFormContainer {
 	height: 30px;
 }
 
-#mc4wp_email {
-	max-width: 200px;
+#sidebar1 .subscribe ul li {
+	border-bottom: 0;
+}
+
+input#DATA0 {
+	width: 75%;
 	height: 30px;
 	padding-left: 8px;
+}
+
+.subscribe input.sublist_fb_option {
+  height: 13px;
+  margin-right: 5px;
+}
+
+/* All purpose */
+
+.italic {
+	font-style: italic;
 }
 
 
@@ -683,9 +697,6 @@ div[id*='formContainer'].rednaoFormContainer {
 	.logo-center img {
 		width: 95%;
 	}
-/*	.post_tags:last-child {
-		margin-bottom: 0;
-	}*/
 
 	.navbar-default .navbar-collapse, .navbar-default .navbar-form {
 		max-height: inherit;
@@ -721,28 +732,4 @@ div[id*='formContainer'].rednaoFormContainer {
 	}
 }
 
-<<<<<<< HEAD
-=======
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> e0faa30164d1c351cef9df1472b67ee8cc0778a9

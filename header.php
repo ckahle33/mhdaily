@@ -29,7 +29,7 @@
 		<?php define('WP_DEBUG', true); ?>
 		<?php wp_head(); ?>
 		<!-- end of wordpress head -->
-				
+
 	</head>
 	
 	<body <?php body_class(); ?>>			
