@@ -161,10 +161,13 @@
 						<h2>Daily Dose</h2>
 						
 						<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
+
+						<div class="news-item">
+
 						<?php if (in_category('Featured')){ 
-								echo "<div class='title featured'>";
+								echo "<div class='title large featured'>";
 							} else {
-								echo "<div class='title'>";
+								echo "<div class='title large'>";
 							}?>
 
 							<!-- check if the advanced custom field is set, if not use normal permalink -->
@@ -172,22 +175,34 @@
 								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
 							<?php } else { ?>
 								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
-							<?php } ?>
 
+							<?php } ?>
 						</div>
+
+						<?php 
+							
+							$content = get_the_content();
+							$trimmed_content = wp_trim_words( $content, 40, '...' );
+
+							echo $trimmed_content; ?>
+
 						<div class="sidebar-source">
 							<?php the_field('post_source'); ?>			
 						</div>
 						<div class="sidebar-tags">
 							<?php the_tags(' ',' | '); ?>	
 						</div>
-						<hr class="blue"></hr>
+						<!-- <hr class="blue"></hr> -->
+					
+					</div>
 
 					<?php endwhile; ?>
 	    			
 					<?php } ?>
 
 			<div class="row">
+
+				<h2>Featured Posts</h2>
 
 				<div class="col-sm-12 daily-feed">
     			<?php $args = array(
