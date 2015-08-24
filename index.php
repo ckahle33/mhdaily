@@ -148,8 +148,8 @@
 				if (!strpos($url, 'tag')) {
 
 					$args = array(
-				    'posts_per_page' => 10,				    
-				    'category_name' => 'Feed',
+				    'posts_per_page' => 20,				    
+				    'category_name' => array('Daily Dose', 'Featured'),
 				    'orderby' => 'post_date',
 				    'order' => 'DESC',
 				    'post_type' => 'post',
@@ -199,58 +199,7 @@
 					<?php endwhile; ?>
 	    			
 					<?php } ?>
-
-			<div class="row">
-
-				<h2>Featured Posts</h2>
-
-				<div class="col-sm-12 daily-feed">
-    			<?php $args = array(
-				    'posts_per_page' => 45,
-				    'offset' => 4,
-				    'category_name' => "Featured",
-				    'orderby' => 'post_date',
-				    'order' => 'DESC',
-				    'post_type' => 'post',
-				    'post_status' => 'publish',
-				    'suppress_filters' => true );
-
-				    $the_query = new WP_Query( $args );?>
-					
-						<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
-						<div class="news-item">
-							<div class='title large featured'>
-							
-							<!-- check if the advanced custom field is set, if not use normal permalink -->
-							<?php if (get_field('post_url')) { ?>
-								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
-							<?php } else { ?>
-								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
-							<?php } ?>
-
-							</div>
-							<div class="body-source">
-								<div class="italic"><?php the_field('post_source'); ?></div> -  <?php echo get_the_date('F j, Y'); ?>			
-							</div>
-							
-							<div class="post-body">
-								<?php 
-								$content = get_the_content();
-								$trimmed_content = wp_trim_words( $content, 40, '...' );
-
-								echo $trimmed_content; ?>
-							</div>
-
-							<div class="body-tags">
-								<?php the_tags(' ',' | '); ?>	
-							</div>
-
-						</div>
-
-						<?php endwhile ?>
-						<?php wp_reset_query(); ?>
-				</div>	
-				
+	
 			</div> <!-- end #main -->
     	
 			

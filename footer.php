@@ -19,7 +19,7 @@
 						<?php wp_bootstrap_footer_links(); // Adjust using Menus in Wordpress Admin ?>
 					</nav>
 					
-					<p class="pull-right"><a href="http://cpkdesign.com" id="credit320" title="your pal, Craig">Craig Kahle</a>+
+					<p class="pull-right"><a href="http://craigkahle.com" id="credit320" title="your pal, Craig">Craig Kahle</a>+
 						<a href="http://320press.com" id="credit320" title="By the dudes of 320press">wp-bootstrap</a></p>
 			
 					<p class="attribution">&copy; <?php bloginfo('name'); ?></p>
