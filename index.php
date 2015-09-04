@@ -149,7 +149,7 @@
 
 					$args = array(
 				    'posts_per_page' => 20,				    
-				    'category_name' => array('Daily Dose', 'Featured'),
+				    'category_name' => array('Featured'),
 				    'orderby' => 'post_date',
 				    'order' => 'DESC',
 				    'post_type' => 'post',
