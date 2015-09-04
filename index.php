@@ -12,8 +12,6 @@
 
 		    $the_query = new WP_Query( $args );?>
 
-
-			
 			<div id="content" class="row">
 			<?php get_sidebar('left-sidebar'); // sidebar 1 ?>
 				<div id="main" class="col-md-9 clearfix" id="post-stream" role="main">
@@ -90,52 +88,50 @@
 		    $the_query = new WP_Query( $args );?>
 
 		    <?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
-					<div class="recent col-sm-6">
-						
+				<div class="recent col-sm-6">
+					<div class="feature-tags" style="display: none;">
+						<?php the_tags(' ',' | '); ?>
+					</div>
+					<?php	$thumb_id = get_post_thumbnail_id();
+							$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
+							$thumb_url = $thumb_url_array[0];
+							$thumb_alt = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
+					?>
+						<div class="image-overlay">
 
-						<div class="feature-tags" style="display: none;">
-							<?php the_tags(' ',' | '); ?>	
-						</div>
-						<?php	$thumb_id = get_post_thumbnail_id();
-								$thumb_url_array = wp_get_attachment_image_src($thumb_id, 'thumbnail-size', true);
-								$thumb_url = $thumb_url_array[0]; 
-								$thumb_alt = get_post_meta($thumb_id , '_wp_attachment_image_alt', true);
-						?>
-							<div class="image-overlay">
+							<!-- check if the advanced custom field is set, if not use normal permalink -->
+							<?php if (get_field('post_url')) { ?>
+								<a href="<?php echo the_field('post_url'); ?> "></a>
+							<?php } else { ?>
+								<a href="<?php echo get_permalink(); ?>"> <?php get_the_title(); ?> </a>
+							<?php } ?>
 
-								<!-- check if the advanced custom field is set, if not use normal permalink -->
-								<?php if (get_field('post_url')) { ?>
-									<a href="<?php echo the_field('post_url'); ?> "></a>
-								<?php } else { ?>
-									<a href="<?php echo get_permalink(); ?>"> <?php get_the_title(); ?> </a>
+							<div class="image" style="background: url('<?php echo $thumb_url; ?>'); background-size: cover;">
+								<?php if (has_tag('video')) { ?>
+									<div class="video-icon">
+										<i class="glyphicon glyphicon-play-circle" aria-hidden="true"></i>
+									</div>
 								<?php } ?>
-
-								<div class="image" style="background: url('<?php echo $thumb_url; ?>'); background-size: cover;">
-									<?php if (has_tag('video')) { ?>
-										<div class="video-icon">	
-											<i class="glyphicon glyphicon-play-circle" aria-hidden="true"></i>
-										</div>
-									<?php } ?>
-								</div>
 							</div>
-							<div class="feature-overlay">
-								<div class="feature-title">
-								 	<?php if (strlen($post->post_title) > 35) {
-										echo substr(the_title($before = '', $after = '', FALSE), 0, 100) . ''; } else {
-										the_title();
-									} ?>
-								</div>
-						 			<br>
-							 	<div class='feature-info'>
-							 		<?php the_field('post_source'); ?>&nbsp;-&nbsp;
-							 		<?php echo get_the_date('F j, Y'); ?>
-							 	</div>
-							 </div>
-						 		<br>
-							 	<div class='feature-intro'>
-							 		<?php echo apply_filters('the_content', substr(get_the_content(), 0, 250) ); ?>
-								</div>
-					</div>	
+						</div>
+						<div class="feature-overlay">
+							<div class="feature-title">
+								<?php if (strlen($post->post_title) > 35) {
+									echo substr(the_title($before = '', $after = '', FALSE), 0, 100) . ''; } else {
+									the_title();
+								} ?>
+							</div>
+								<br>
+							<div class='feature-info'>
+								<?php the_field('post_source'); ?>&nbsp;-&nbsp;
+								<?php echo get_the_date('F j, Y'); ?>
+							</div>
+						 </div>
+							<br>
+							<div class='feature-intro'>
+								<?php echo apply_filters('the_content', substr(get_the_content(), 0, 250) ); ?>
+							</div>
+					</div>
 
 					<?php endwhile; ?>
     			<?php wp_reset_query(); ?>
@@ -147,62 +143,55 @@
 
 				if (!strpos($url, 'tag')) {
 
-					$args = array(
-				    'posts_per_page' => 20,				    
-				    'category_name' => array('Featured'),
-				    'orderby' => 'post_date',
-				    'order' => 'DESC',
-				    'post_type' => 'post',
-				    'post_status' => 'publish'
-				    );
+				$args = array(
+					'posts_per_page' => 20,
+					'offset' => 4,
+					'category_name' => 'Featured',
+					'orderby' => 'post_date',
+					'order' => 'DESC',
+					'post_type' => 'post',
+					'post_status' => 'publish'
+				);
 
-				    $the_query = new WP_Query( $args );?>
-						
-						<h2>Daily Dose</h2>
-						
-						<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
+				$the_query = new WP_Query( $args );?>
 
-						<div class="news-item">
+					<h2>Daily Dose</h2>
 
-						<?php if (in_category('Featured')){ 
-								echo "<div class='title large featured'>";
-							} else {
-								echo "<div class='title large'>";
-							}?>
+					<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?>
 
-							<!-- check if the advanced custom field is set, if not use normal permalink -->
-							<?php if (get_field('post_url')) { ?>
-								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
-							<?php } else { ?>
-								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
+					<div class="news-item">
 
-							<?php } ?>
-						</div>
+					<?php if (in_category('Featured')){
+							echo "<div class='title large featured'>";
+						} else {
+							echo "<div class='title large'>";
+						}?>
 
-						<?php 
-							
-							$content = get_the_content();
-							$trimmed_content = wp_trim_words( $content, 40, '...' );
+						<!-- check if the advanced custom field is set, if not use normal permalink -->
+						<?php if (get_field('post_url')) { ?>
+							<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
+						<?php } else { ?>
+							<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
 
-							echo $trimmed_content; ?>
-
-						<div class="sidebar-source">
-							<?php the_field('post_source'); ?>			
-						</div>
-						<div class="sidebar-tags">
-							<?php the_tags(' ',' | '); ?>	
-						</div>
-						<!-- <hr class="blue"></hr> -->
-					
+						<?php } ?>
 					</div>
 
-					<?php endwhile; ?>
-	    			
-					<?php } ?>
-	
+					<?php
+
+						$content = get_the_content();
+						$trimmed_content = wp_trim_words( $content, 40, '...' );
+
+						echo $trimmed_content; ?>
+
+					<div class="sidebar-source">
+						<?php the_field('post_source'); ?>
+					</div>
+					<div class="sidebar-tags">
+						<?php the_tags(' ',' | '); ?>
+					</div>
+				</div>
+				<?php endwhile; } ?>
 			</div> <!-- end #main -->
-    	
-			
 	</div> <!-- end #content -->
 
 
