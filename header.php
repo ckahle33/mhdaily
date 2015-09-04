@@ -66,20 +66,18 @@
 								$tag_slug = get_term_by('slug', 'blog', 'post_tag'); 
 								$blog_link = get_tag_link($tag_slug->term_id);
 
+								$fold_slug;
+
+								$about_link = get_permalink( get_page_by_title( 'About' ) );
+
 								$html .= "<a href='{$blog_link}'>$tag_slug->name</a>";
+								$html .= "<a href='{$about_link}'>About</a>";
+
+								$html .= '</div>';
+
+								echo $html;
 
 							?>
-
-							<?php foreach ( $tags as $tag ) {
-								$tag_link = get_tag_link( $tag->term_id );
-										
-								$html .= "<a href='{$tag_link}' title='{$tag->name} Tag' class='{$tag->slug}'>";
-								$html .= "{$tag->name}</a>";
-							}
-							$html .= '</div>';
-							echo $html;
-							?>
-
 						</div>
 
 					<div class="logo">
@@ -102,7 +100,12 @@
 			<div class="col-sm-12 search">
 			<div class="col-sm-6 sub-nav">
 				<div class="date">
-					<h2 class="date"><?php echo date('F j, Y'); ?></h2>
+					<h2 class="date">
+						<?php
+							date_default_timezone_set('America/Chicago');
+							echo date('F j, Y');
+						?>
+					</h2>
 				</div>
 			</div>
 
