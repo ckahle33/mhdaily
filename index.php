@@ -3,7 +3,7 @@
 		<?php $args = array(
 		    'posts_per_page' => 2,
 		    'offset' => 0,
-		    'category_name' => "Featured",
+		    'category_name' => "Featured+Daily Dose",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
@@ -17,7 +17,10 @@
 				<div id="main" class="col-md-9 clearfix" id="post-stream" role="main">
 					<h2>Daily Special</h2>
 				<div class='row'>
-				<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
+				<?php
+					while ($the_query -> have_posts()) : $the_query->the_post();
+					$do_not_duplicate = $post->ID;
+				?>
 					<div class="recent col-sm-6">
 						<a href="<?php echo the_field('post_url'); ?>">
 								
@@ -78,7 +81,7 @@
 			<?php $args = array(
 		    'posts_per_page' => 2,
 		    'offset' => 2,
-		    'category_name' => "Featured",
+		    'category_name' => "Featured+Daily Dose",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
@@ -87,7 +90,10 @@
 
 		    $the_query = new WP_Query( $args );?>
 
-		    <?php while ($the_query -> have_posts()) : $the_query->the_post(); ?> 
+		    <?php
+				while ($the_query -> have_posts()) : $the_query->the_post();
+				$do_not_duplicate2 = $post->ID;
+			?>
 				<div class="recent col-sm-6">
 					<div class="feature-tags" style="display: none;">
 						<?php the_tags(' ',' | '); ?>
@@ -146,7 +152,7 @@
 				$args = array(
 					'posts_per_page' => 20,
 					'offset' => 4,
-					'category_name' => 'Featured',
+					'category_name' => ' Daily Dose',
 					'orderby' => 'post_date',
 					'order' => 'DESC',
 					'post_type' => 'post',
@@ -159,37 +165,40 @@
 
 					<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?>
 
-					<div class="news-item">
+					<?php if ($do_not_duplicate !== $post->ID && $do_not_duplicate2 !== $post->ID ) { ?>
 
-					<?php if (in_category('Featured')){
-							echo "<div class='title large featured'>";
-						} else {
-							echo "<div class='title large'>";
-						}?>
+						<div class="news-item">
 
-						<!-- check if the advanced custom field is set, if not use normal permalink -->
-						<?php if (get_field('post_url')) { ?>
-							<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
-						<?php } else { ?>
-							<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
+						<?php if (in_category('Featured')){
+								echo "<div class='title large featured'>";
+							} else {
+								echo "<div class='title large'>";
+							}?>
 
-						<?php } ?>
+							<!-- check if the advanced custom field is set, if not use normal permalink -->
+							<?php if (get_field('post_url')) { ?>
+								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
+							<?php } else { ?>
+								<a href="<?php echo get_permalink(); ?>"> <?php the_title(); ?> </a></br>
+
+							<?php } ?>
+						</div>
+
+						<?php
+
+							$content = get_the_content();
+							$trimmed_content = wp_trim_words( $content, 40, '...' );
+
+							echo $trimmed_content; ?>
+
+						<div class="sidebar-source">
+							<?php the_field('post_source'); ?>
+						</div>
+						<div class="sidebar-tags">
+							<?php the_tags(' ',' | '); ?>
+						</div>
 					</div>
-
-					<?php
-
-						$content = get_the_content();
-						$trimmed_content = wp_trim_words( $content, 40, '...' );
-
-						echo $trimmed_content; ?>
-
-					<div class="sidebar-source">
-						<?php the_field('post_source'); ?>
-					</div>
-					<div class="sidebar-tags">
-						<?php the_tags(' ',' | '); ?>
-					</div>
-				</div>
+						<?php  } ?>
 				<?php endwhile; } ?>
 			</div> <!-- end #main -->
 	</div> <!-- end #content -->
