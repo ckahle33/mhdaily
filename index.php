@@ -3,7 +3,7 @@
 		<?php $args = array(
 		    'posts_per_page' => 2,
 //		    'offset' => 0,
-		    'category_name' => "Featured",
+		    'category_name' => "Featured+Daily Dose",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
@@ -88,7 +88,7 @@
 			<?php $args = array(
 		    'posts_per_page' => 2,
 		    'offset' => 2,
-		    'category_name' => "Featured",
+		    'category_name' => "Featured+Daily Dose",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
@@ -160,7 +160,7 @@
 				$args = array(
 					'posts_per_page' => 20,
 //					'offset' => 0,
-					'category_name' => ' Daily Dose',
+					'category_name' => 'Daily Dose',
 					'orderby' => 'post_date',
 					'order' => 'DESC',
 					'post_type' => 'post',
@@ -174,7 +174,7 @@
 					<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?>
 
 					<?php if (!in_array($post->ID, $do_not_duplicate)) { ?>
-							
+
 						<div class="news-item">
 
 						<?php if (in_category('Featured')){
