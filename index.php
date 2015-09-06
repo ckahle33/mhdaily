@@ -2,15 +2,20 @@
 
 		<?php $args = array(
 		    'posts_per_page' => 2,
-		    'offset' => 0,
-		    'category_name' => "Featured+Daily Dose",
+//		    'offset' => 0,
+		    'category_name' => "Featured",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
-		    'post_status' => 'publish',
-		    'suppress_filters' => true );
+		    'post_status' => 'publish'
+			);
 
-		    $the_query = new WP_Query( $args );?>
+		    $the_query = new WP_Query( $args );
+
+			// init an array to save 4 featured post ids to not duplicate below.
+			$do_not_duplicate = [];
+
+			?>
 
 			<div id="content" class="row">
 			<?php get_sidebar('left-sidebar'); // sidebar 1 ?>
@@ -19,8 +24,10 @@
 				<div class='row'>
 				<?php
 					while ($the_query -> have_posts()) : $the_query->the_post();
-					$do_not_duplicate = $post->ID;
+					//track post ids and check if already shown in last loop
+					array_push($do_not_duplicate, $post->ID);
 				?>
+
 					<div class="recent col-sm-6">
 						<a href="<?php echo the_field('post_url'); ?>">
 								
@@ -81,18 +88,19 @@
 			<?php $args = array(
 		    'posts_per_page' => 2,
 		    'offset' => 2,
-		    'category_name' => "Featured+Daily Dose",
+		    'category_name' => "Featured",
 		    'orderby' => 'post_date',
 		    'order' => 'DESC',
 		    'post_type' => 'post',
-		    'post_status' => 'publish',
-		    'suppress_filters' => true );
+		    'post_status' => 'publish'
+			);
 
 		    $the_query = new WP_Query( $args );?>
 
 		    <?php
 				while ($the_query -> have_posts()) : $the_query->the_post();
-				$do_not_duplicate2 = $post->ID;
+				//track post ids and check if already shown in last loop
+				array_push($do_not_duplicate, $post->ID);
 			?>
 				<div class="recent col-sm-6">
 					<div class="feature-tags" style="display: none;">
@@ -144,14 +152,14 @@
 			</div>
 
 			<?php 
-				wp_reset_query();
+//				wp_reset_query();
 				$url = "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
 
 				if (!strpos($url, 'tag')) {
 
 				$args = array(
 					'posts_per_page' => 20,
-					'offset' => 4,
+//					'offset' => 0,
 					'category_name' => ' Daily Dose',
 					'orderby' => 'post_date',
 					'order' => 'DESC',
@@ -159,14 +167,14 @@
 					'post_status' => 'publish'
 				);
 
-				$the_query = new WP_Query( $args );?>
+				$the_query = new WP_Query( $args ); ?>
 
 					<h2>Daily Dose</h2>
 
 					<?php while ($the_query -> have_posts()) : $the_query->the_post(); ?>
 
-					<?php if ($do_not_duplicate !== $post->ID && $do_not_duplicate2 !== $post->ID ) { ?>
-
+					<?php if (!in_array($post->ID, $do_not_duplicate)) { ?>
+							
 						<div class="news-item">
 
 						<?php if (in_category('Featured')){
@@ -198,8 +206,13 @@
 							<?php the_tags(' ',' | '); ?>
 						</div>
 					</div>
-						<?php  } ?>
-				<?php endwhile; } ?>
+
+					<?php } ?>
+
+					<?php endwhile;   ?>
+
+				<?php } ?>
+
 			</div> <!-- end #main -->
 	</div> <!-- end #content -->
 
