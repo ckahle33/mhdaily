@@ -183,6 +183,8 @@
 								echo "<div class='title large'>";
 							}?>
 
+
+
 							<!-- check if the advanced custom field is set, if not use normal permalink -->
 							<?php if (get_field('post_url')) { ?>
 								<a href="<?php echo get_field('post_url'); ?> "> <?php the_title(); ?> </a></br>
@@ -199,12 +201,15 @@
 
 							echo $trimmed_content; ?>
 
+
+
 						<div class="sidebar-source">
 							<?php the_field('post_source'); ?>
 						</div>
 						<div class="sidebar-tags">
 							<?php the_tags(' ',' | '); ?>
 						</div>
+						<b><?php echo get_the_date(); ?></b>
 					</div>
 
 					<?php } ?>
