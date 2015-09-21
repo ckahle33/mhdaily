@@ -204,12 +204,11 @@
 
 
 						<div class="sidebar-source">
-							<?php the_field('post_source'); ?>
+							<?php the_field('post_source'); ?> - <?php echo get_the_date('F j, Y'); ?>			
 						</div>
 						<div class="sidebar-tags">
 							<?php the_tags(' ',' | '); ?>
 						</div>
-						<b><?php echo get_the_date(); ?></b>
 					</div>
 
 					<?php } ?>
