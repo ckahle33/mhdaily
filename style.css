@@ -528,19 +528,20 @@ input#s {
 	word-break: break-word;
 }
 
-.post_tags {
+.post_tags, .menu-dropdown-container {
 	margin-top: 30px;
 	text-align: center;
 	word-break: break-word;
+	padding: 0;
 }
 
-.post_tags a {
+.post_tags a, #menu-dropdown li {
 	display: inline;
-	margin: 0 5px;
+	margin: 0 14px;
 	display: inline-block;
 }
 
-.post_tags a:not(.topics) {
+.post_tags a:not(.topics), #menu-dropdown a{
 	font-family: 'Knockout 27 A', 'Knockout 27 B'; 
 	font-weight: 400; 
 	font-style: normal;
@@ -605,13 +606,21 @@ h2.topic {
 	content: "";
 }
 
-
-.post_tags a:after {
-	content: "\2022";
-	margin: 0 0 0 8px;
+#menu-dropdown {
+	padding-left: 0;
 }
 
-.post_tags a:last-child:after {
+/*.post_tags a:after*/
+ .menu-dropdown-container li:after {
+    content: "\2022";
+    color: #fff;
+    position: absolute;
+    margin: 11px 8px;
+    width: 17px;
+}
+
+/* .post_tags a:last-child:after, */
+.menu-dropdown-container li:last-child:after {
 	content: '';
 }
 

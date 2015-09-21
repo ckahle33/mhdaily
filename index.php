@@ -158,7 +158,7 @@
 				if (!strpos($url, 'tag')) {
 
 				$args = array(
-					'posts_per_page' => 20,
+					'posts_per_page' => 30,
 //					'offset' => 0,
 					'category_name' => 'Daily Dose',
 					'orderby' => 'post_date',

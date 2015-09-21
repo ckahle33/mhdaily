@@ -60,24 +60,9 @@
 							$html = '<div class="post_tags">'; ?>
 
 							<div class="topics">#MHDAILY</div>
+
+							<?php wp_nav_menu( array('menu' => 'Dropdown' )); ?>
 							
-							<?php 
-
-								$tag_slug = get_term_by('slug', 'blog', 'post_tag'); 
-								$blog_link = get_tag_link($tag_slug->term_id);
-
-								$fold_slug;
-
-								$about_link = get_permalink( get_page_by_title( 'About' ) );
-
-								$html .= "<a href='{$blog_link}'>$tag_slug->name</a>";
-								$html .= "<a href='{$about_link}'>About</a>";
-
-								$html .= '</div>';
-
-								echo $html;
-
-							?>
 						</div>
 
 					<div class="logo">
